@@ -1,0 +1,31 @@
+<section class="jumbotron mb-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-5 text-center mb-4">Book your rooms</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form method="get" action="{% url 'hotel:search' %}">
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <input type="search" class="form-control" name="location" placeholder="Search City : San Francisco, Miami, New York">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <select name="type_choice" class="form-control">
+                                    <option selected="true" disabled="disabled">Type All</option>
+                                    {% for key,value in type %}
+                                    <option value="{{ key }}">{{ value }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

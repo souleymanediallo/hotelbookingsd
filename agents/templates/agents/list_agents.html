@@ -1,0 +1,44 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <section class="jumbotron mb-2">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-3">Agents</h1>
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'hotel:home' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Agents</li>
+                      </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mb-5">
+        <div class="container">`
+            <div class="row">
+                {% for agent in agents %}
+                <div class="col-lg-3 mb-3 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="{{ agent.image.url }}" class="img-fluid rounded-circle mb-3" width="80" height="80">
+                            <p class="font-weight-bold mb-0">{{ agent.name }}</p>
+                            <p>{{ agent.type }}</p>
+                            <button type="button" class="btn btn-outline-primary">View detail</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}

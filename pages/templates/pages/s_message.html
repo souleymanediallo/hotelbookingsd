@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <section class="jumbotron mb-3">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-3">Send Messsage</h1>
+                <p class="alert alert-success">Message send whith success</p>
+            </div>
+        </div>
+    </section>
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a href="{% url 'hotel:home' %}" class="btn btn-primary btn-lg">Return Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

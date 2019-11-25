@@ -1,0 +1,31 @@
+body {
+    background: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background: #343a40!important;
+}
+
+.navbar-brand {
+    border: 1px solid #fff!important;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.navbar-brand, .navbar-nav .nav-item .nav-link {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #007bff;
+    transition: all 0.3s;
+}
+
+/* footer */
+.ul-adresse li {
+    margin-bottom: 10px;
+    font-weight: bold;
+}

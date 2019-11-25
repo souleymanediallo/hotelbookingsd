@@ -1,0 +1,65 @@
+{% extends 'layout/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <section class="jumbotron mb-2">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-3">Contact</h1>
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'hotel:home' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                      </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{ form_contact|crispy }}
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <di class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <address>
+                                <h3>Adresse</h3>
+                                <hr>
+                                <ul class="list-unstyled ul-adresse">
+                                    <li><i class="fa fa-phone-volume"></i> (123) 456-7890</li>
+                                    <li><i class="fa fa-envelope"></i> info@yourcompany.com</li>
+                                    <li><i class="fa fa-home"></i> 15465 Stick Street</li>
+                                    <li>San Francisco, LA 626, USA</li>
+                                </ul>
+                            </address>
+                        </div>
+                    </div>
+                </di>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

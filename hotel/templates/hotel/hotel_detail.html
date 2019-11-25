@@ -1,0 +1,115 @@
+{% extends 'layout/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <section class="jumbotron mb-3">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4 font-weight-bold">{{ hotel.name }} | {{ hotel.location }}</h1>
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'hotel:home' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'hotel:hotel-list' %}">Hotels</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                      </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mb-5">
+        <div class="container">
+            <div class="row">
+                <!-- detail item -->
+                <div class="col-lg-7 mb-3">
+                    <div class="card">
+                        <img src="{{ hotel.photo_main.url }}" class="card-img-top">
+                        <div class="card-body">
+                            <!-- thumbnails -->
+                            <div class="row mb-3 thumbs">
+                                {% if hotel.photo_1 %}
+                                <div class="col-4 col-sm-6 col-md-2 mb-2">
+                                    <a href="{{ hotel.photo_1.url }}" data-lightbox="home-images"></a>
+                                    <img src="{{ hotel.photo_1.url }}" class="img-fluid">
+                                </div>
+                                {% endif %}
+                                {% if hotel.photo_2 %}
+                                <div class="col-4 col-sm-6 col-md-2 mb-2">
+                                    <a href="{{ hotel.photo_2.url }}" data-lightbox="photo_2"></a>
+                                    <img src="{{ hotel.photo_2.url }}" class="img-fluid">
+                                </div>
+                                {% endif %}
+                                {% if hotel.photo_3 %}
+                                <div class="col-4 col-sm-6 col-md-2 mb-2">
+                                    <a href="{{ hotel.photo_3.url }}" data-toggle="lightbox" data-gallery="example-gallery"></a>
+                                    <img src="{{ hotel.photo_3.url }}" class="img-fluid">
+                                </div>
+                                {% endif %}
+                                {% if hotel.photo_4 %}
+                                <div class="col-4 col-sm-6 col-md-2 mb-2">
+                                    <a href="{{ hotel.photo_4.url }}" data-toggle="lightbox" data-gallery="example-gallery"></a>
+                                    <img src="{{ hotel.photo_4.url }}" class="img-fluid">
+                                </div>
+                                {% endif %}
+                                {% if hotel.photo_5 %}
+                                <div class="col-4 col-sm-6 col-md-2 mb-2">
+                                    <a href="{{ hotel.photo_5.url }}" data-toggle="lightbox" data-gallery="example-gallery"></a>
+                                    <img src="{{ hotel.photo_5.url }}" class="img-fluid">
+                                </div>
+                                {% endif %}
+                                {% if hotel.photo_6 %}
+                                <div class="col-4 col-sm-6 col-md-2 mb-2">
+                                    <a href="{{ hotel.photo_6.url }}" data-toggle="lightbox" data-gallery="example-gallery"></a>
+                                    <img src="{{ hotel.photo_6.url }}" class="img-fluid">
+                                </div>
+                                {% endif %}
+                            </div>
+                            <!-- end thumbnails -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p class="h1">Price <span class="badge badge-success">$ {{ hotel.price }}</span> <span class="h5">{{ hotel.location }}</span> </p>
+                                    <hr>
+                                    <h2 class="h3 py-2">Description</h2>
+                                    <p>{{ hotel.description|urlize|linebreaksbr  }}</p>
+                                    <hr>
+                                    <ul class="list-inline d-flex justify-content-between">
+                                        <li class="list-inline-item small"><strong>Area</strong><br/>{{ hotel.area }} m<sup>2</sup></li>
+                                        <li class="list-inline-item small"><strong>Bed</strong><br/>{{ hotel.bedroom }}</li>
+                                        <li class="list-inline-item small"><strong>Bathroom</strong><br/>{{ hotel.bedroom }}</li>
+                                        <li class="list-inline-item small"><strong>Garage</strong><br/>{{ hotel.garage }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end detail item -->
+                <div class="col-lg-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="font-weight-bold text-success">Booking Room</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{ reserve_form|crispy }}
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-danger font-weight-bold text-uppercase btn-block">Booking</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
